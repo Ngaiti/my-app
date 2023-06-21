@@ -1,19 +1,17 @@
-import { useState } from 'react'
+import './App.css'
+import Home from './pages/Home'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route>
+          <Route element={<Home />} path="/" />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 

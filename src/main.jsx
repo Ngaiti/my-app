@@ -6,8 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {/* <div className="bg-dark text-light" style={{ minHeight: '100vh' }}> */}
-    <App />
-    {/* </div> */}
+    <div className='body'>
+      <App />
+    </div>
   </React.StrictMode>,
 )

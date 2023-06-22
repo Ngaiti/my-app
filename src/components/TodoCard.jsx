@@ -30,11 +30,13 @@ export default function TodoCard({ todo }) {
     };
 
     const deleteTodo = () => {
-        setTodos((prevTodos) =>
-            prevTodos.filter((prevTodo) => prevTodo.id !== todo.id)
-        );
+        const confirmDelete = window.confirm("Are you sure you want to delete this?");
+        if (confirmDelete) {
+            setTodos((prevTodos) =>
+                prevTodos.filter((prevTodo) => prevTodo.id !== todo.id)
+            );
+        }
     };
-
     useEffect(() => {
         return () => {
             clearInterval(timerInterval);

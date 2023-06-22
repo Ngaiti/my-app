@@ -37,6 +37,7 @@ export default function TodoCard({ todo }) {
             );
         }
     };
+
     useEffect(() => {
         return () => {
             clearInterval(timerInterval);

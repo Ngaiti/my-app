@@ -2,8 +2,8 @@ import Welcome from './pages/Welcome';
 import Home from './pages/Home';
 import Login from './pages/Login'
 import ErrorPage from './pages/Error';
-import AddTodo from './pages/AddTodo';
-import EditTodo from './pages/EditTodo';
+import AddReview from './pages/AddReview';
+import EditTodo from './pages/EditReview';
 
 import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom'
 import { AuthContext } from './AuthContext';
@@ -63,7 +63,7 @@ function App() {
                 <Route
                   element={
                     <RequireAuth>
-                      <AddTodo />
+                      <AddReview />
                     </RequireAuth>
                   }
                   path="add" />

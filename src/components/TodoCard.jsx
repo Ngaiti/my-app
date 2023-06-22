@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Button, ButtonGroup, Card } from "react-bootstrap";
 import { TodoContext } from "../contexts/TodoContext";
+import Rating from "react-rating";
 
 export default function TodoCard({ todo }) {
     const completed = todo.completed;
@@ -52,6 +53,7 @@ export default function TodoCard({ todo }) {
                 <Card.Body>
                     <Card.Title>{todo.title}</Card.Title>
                     <Card.Text>{todo.description}</Card.Text>
+                    <Rating initialRating={0} emptySymbol="bi bi-star" fullSymbol="bi bi-star-fill" onChange={(rating) => console.log(rating)} />
                     <p>Timer: {timer} seconds</p>
                     <div className="d-flex justify-content-center align-items-center">
                         <ButtonGroup aria-label="Basic example">

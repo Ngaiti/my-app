@@ -3,34 +3,26 @@ import { Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import { TodoContext } from "../contexts/TodoContext";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export default function EditTodo() {
+export default function AddReview() {
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [completed, setCompleted] = useState(false);
     const setTodos = useContext(TodoContext).setTodos;
     const todos = useContext(TodoContext).todos;
     const navigate = useNavigate();
-    const id = parseInt(useParams().id);
-    const currentTodo = todos.filter((todo) => todo.id === id)[0];
-    const [title, setTitle] = useState(currentTodo.title);
-    const [description, setDescription] = useState(currentTodo.description);
-    const [completed, setCompleted] = useState(currentTodo.completed);
 
-    function updateTodo(event) {
+    function addReview(event) {
         event.preventDefault();
-        const updatedTodos = todos.map((todo) => {
-            if (todo.id === id) {
-                return { id, title, description, completed };
-            }
-            return todo;
-        });
-        setTodos(updatedTodos);
+        setTodos([...todos, { id: Date.now(), title, description, completed }]);
         navigate("/home");
     }
 
     return (
         <Container>
-            <h1 className="my-3">Edit Todo</h1>
-            <Form onSubmit={updateTodo}>
+            <h1 className="my-3">Add Review</h1>
+            <Form onSubmit={addReview}>
                 <Form.Group className="mb-3" controlId="title">
                     <Form.Label>Title</Form.Label>
                     <Form.Control
@@ -48,7 +40,7 @@ export default function EditTodo() {
                         onChange={(e) => setDescription(e.target.value)}
                         as="textarea"
                         rows={3}
-                        placeholder={`i. Insert something in me\nii.Doodle on me \niii. Gimme more`}
+                        placeholder={`i. Insert something in me\nii. Doodle on me \niii. Gimme more`}
                         required
                     />
                 </Form.Group>

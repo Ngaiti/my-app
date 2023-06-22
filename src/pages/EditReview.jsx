@@ -3,26 +3,34 @@ import { Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import { TodoContext } from "../contexts/TodoContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-export default function AddTodo() {
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [completed, setCompleted] = useState(false);
+export default function EditTodo() {
     const setTodos = useContext(TodoContext).setTodos;
     const todos = useContext(TodoContext).todos;
     const navigate = useNavigate();
+    const id = parseInt(useParams().id);
+    const currentTodo = todos.filter((todo) => todo.id === id)[0];
+    const [title, setTitle] = useState(currentTodo.title);
+    const [description, setDescription] = useState(currentTodo.description);
+    const [completed, setCompleted] = useState(currentTodo.completed);
 
-    function addTodo(event) {
+    function updateTodo(event) {
         event.preventDefault();
-        setTodos([...todos, { id: Date.now(), title, description, completed }]);
+        const updatedTodos = todos.map((todo) => {
+            if (todo.id === id) {
+                return { id, title, description, completed };
+            }
+            return todo;
+        });
+        setTodos(updatedTodos);
         navigate("/home");
     }
 
     return (
         <Container>
-            <h1 className="my-3">Add Task</h1>
-            <Form onSubmit={addTodo}>
+            <h1 className="my-3">Edit Review</h1>
+            <Form onSubmit={updateTodo}>
                 <Form.Group className="mb-3" controlId="title">
                     <Form.Label>Title</Form.Label>
                     <Form.Control

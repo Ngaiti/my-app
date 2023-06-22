@@ -14,8 +14,8 @@ export default function Home() {
     return (
         <>
             <Container>
-                <h1 className="my-3">Tasks</h1>
-                <Button variant="outline-dark" onClick={GoToAddTodoPage}> Add Todo</Button>
+                <h1 className="my-3">Reviews</h1>
+                <Button variant="outline-dark" onClick={GoToAddTodoPage}> Add Review</Button>
                 <Row>
                     <CardGroup todos={todos} />
                 </Row>

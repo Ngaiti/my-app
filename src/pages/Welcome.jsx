@@ -1,12 +1,16 @@
-import { Container } from "react-bootstrap"
 import Likecount from "../components/Likecount"
 
 function Welcome() {
+
+    const now = new Date()
+
     return (
-        <Container className="my-3">
-            <h1> Howdy Yall!</h1>
-            <Likecount />
-        </Container>
+        <div className="d-flex align-items-center justify-content-center">
+            <div className='text-center'>
+                <h1> Hello Sluts! It is now {now.toString()}</h1>
+                <Likecount />
+            </div>
+        </div>
     )
 }
 

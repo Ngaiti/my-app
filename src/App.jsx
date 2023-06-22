@@ -15,9 +15,9 @@ import { TodoContext } from './contexts/TodoContext';
 function Layout() {
   return (
     <>
-      <Navbar bg="light" variant="light">
+      <Navbar bg="light" variant="light" className='bg-dark text-light' >
         <Container>
-          <Navbar.Brand href="/">Home :3</Navbar.Brand>
+          <Navbar.Brand className="text-light" href="/home">Home :3</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/login">Login</Nav.Link>
           </Nav>
@@ -27,6 +27,8 @@ function Layout() {
     </>
   );
 }
+
+
 
 function App() {
   const [token, setToken] = useLocalStorage("token", null);

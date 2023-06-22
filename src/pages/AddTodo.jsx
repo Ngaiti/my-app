@@ -21,7 +21,7 @@ export default function AddTodo() {
 
     return (
         <Container>
-            <h1 className="my-3">Add Todo</h1>
+            <h1 className="my-3">Add Task</h1>
             <Form onSubmit={addTodo}>
                 <Form.Group className="mb-3" controlId="title">
                     <Form.Label>Title</Form.Label>
@@ -29,7 +29,7 @@ export default function AddTodo() {
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         type="text"
-                        placeholder="Get software developer job"
+                        placeholder="Write something in me"
                         required
                     />
                 </Form.Group>
@@ -40,7 +40,7 @@ export default function AddTodo() {
                         onChange={(e) => setDescription(e.target.value)}
                         as="textarea"
                         rows={3}
-                        placeholder={`1. Create amazing project\n2. Apply to Google & Netflix\n3. Crush interview`}
+                        placeholder={`i. Insert something in me\nii.Doodle on me \niii. Gimme more`}
                         required
                     />
                 </Form.Group>

@@ -44,7 +44,7 @@ export default function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </Form.Group>
-                <Button className="my-3" variant="primary" onClick={login}>Login</Button>
+                <Button className="my-3" variant="outline-dark" onClick={login}>Login</Button>
             </Form>
             {loginFailed && <p>Invalid email or password. Please try again.</p>}
         </Container>

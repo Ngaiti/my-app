@@ -14,12 +14,12 @@ export default function Home() {
     return (
         <>
             <Container>
-                <h1 className="my-3">Todos</h1>
+                <h1 className="my-3">Tasks</h1>
+                <Button variant="outline-dark" onClick={GoToAddTodoPage}> Add Todo</Button>
                 <Row>
                     <CardGroup todos={todos} />
                 </Row>
             </Container>
-            <Button variant="outline-dark" onClick={GoToAddTodoPage}> Add Todo</Button>
         </>
     );
 }
@@ -27,7 +27,7 @@ export default function Home() {
 function CardGroup({ todos }) {
     return todos.map((todo) => {
         return (
-            <Col md={4} key={todo.id}>
+            <Col md={6} key={todo.id}>
                 <TodoCard todo={todo} />
             </Col>
         );

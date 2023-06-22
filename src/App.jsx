@@ -2,9 +2,12 @@ import './App.css'
 import Home from './pages/Home'
 import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom'
 import Login from './pages/Login'
-import { useState } from 'react';
 import { AuthContext } from './AuthContext';
 import { Container, Nav, Navbar } from 'react-bootstrap';
+import ErrorPage from './pages/Error';
+import RequireAuth from './components/RequireAuth';
+import MainPage from './pages/MainPage';
+import useLocalStorage from 'use-local-storage';
 
 function Layout() {
   return (
@@ -23,7 +26,7 @@ function Layout() {
 }
 
 function App() {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useLocalStorage("token", null);
 
   return (
     <AuthContext.Provider value={{ token, setToken }}>
@@ -32,6 +35,14 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="*" element={<ErrorPage />} />
+            <Route
+              element={
+                <RequireAuth>
+                  <MainPage />
+                </RequireAuth>
+              }
+              path="/mainpage" />
           </Route>
         </Routes>
       </BrowserRouter>

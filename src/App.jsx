@@ -12,14 +12,23 @@ import RequireAuth from './components/RequireAuth';
 import useLocalStorage from 'use-local-storage';
 import { TodoContext } from './contexts/TodoContext';
 import "./App.css"
+import { useContext } from 'react';
 
 
 function Layout() {
+  const { setToken } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    setToken(null);
+  };
+
   return (
+
     <>
       <Navbar bg="light" variant="light" className='bg-dark text-light' >
-        <Container>
+        <Container className="d-flex justify-content-between">
           <Navbar.Brand className="text-light" href="/home">Home :3</Navbar.Brand>
+          <Navbar.Brand className="text-light" href="/" onClick={handleLogout}>Logout</Navbar.Brand>
         </Container>
       </Navbar>
       <Outlet />

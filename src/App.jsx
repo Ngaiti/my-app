@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import Login from './pages/Login'
 import ErrorPage from './pages/Error';
 import AddTodo from './pages/AddTodo';
+import EditTodo from './pages/EditTodo';
 
 import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom'
 import { AuthContext } from './AuthContext';
@@ -42,7 +43,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Welcome />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="login" element={<Login />} />
               <Route path="*" element={<ErrorPage />} />
               <Route
                 element={
@@ -50,14 +51,21 @@ function App() {
                     <Home />
                   </RequireAuth>
                 }
-                path="/home" />
+                path="home" />
               <Route
                 element={
                   <RequireAuth>
                     <AddTodo />
                   </RequireAuth>
                 }
-                path="/add" />
+                path="add" />
+              <Route
+                element={
+                  <RequireAuth>
+                    <EditTodo />
+                  </RequireAuth>
+                }
+                path="todo/:id" />
             </Route>
           </Routes>
         </BrowserRouter>

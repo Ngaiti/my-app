@@ -19,7 +19,7 @@ export default function Home() {
                     <CardGroup todos={todos} />
                 </Row>
             </Container>
-            <Button onClick={GoToAddTodoPage}> Add Todo</Button>
+            <Button variant="outline-dark" onClick={GoToAddTodoPage}> Add Todo</Button>
         </>
     );
 }

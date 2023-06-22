@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Button, Card } from "react-bootstrap";
+import { Button, ButtonGroup, Card } from "react-bootstrap";
 import { TodoContext } from "../contexts/TodoContext";
 
 export default function TodoCard({ todo }) {
@@ -40,29 +40,35 @@ export default function TodoCard({ todo }) {
             clearInterval(timerInterval);
         };
     }, [timerInterval]);
+
+
     return (
         <>
-            <Card border={border} className="my-3">
-                <Card.Header>{!completed && "Not"} Completed</Card.Header>
+            <Card border={border} className="my-3 border-2">
+                <Card.Header as="h6">{!completed && "Not"} Completed</Card.Header>
                 <Card.Body>
                     <Card.Title>{todo.title}</Card.Title>
                     <Card.Text>{todo.description}</Card.Text>
                     <p>Timer: {timer} seconds</p>
-                    <Button onClick={startTimer}>
-                        <i className="bi bi-play"></i>
-                    </Button>
-                    <Button onClick={pauseTimer} className="ms-2">
-                        <i className="bi bi-pause-fill"></i>
-                    </Button>
-                    <Button onClick={resetTimer} className="ms-2">
-                        <i className="bi bi-arrow-clockwise"></i>
-                    </Button>
-                    <Button variant="secondary" href={`todo/${todo.id}`} className="ms-2">
-                        <i className="bi bi-pencil"></i>
-                    </Button>
-                    <Button variant="danger" onClick={deleteTodo} className="ms-2">
-                        <i className="bi bi-trash3"></i>
-                    </Button>
+                    <div className="d-flex justify-content-center align-items-center">
+                        <ButtonGroup aria-label="Basic example">
+                            <Button variant="secondary" onClick={startTimer}>
+                                <i className="bi bi-play-circle"></i>
+                            </Button>
+                            <Button variant="secondary" onClick={pauseTimer} >
+                                <i className="bi bi-pause-fill"></i>
+                            </Button>
+                            <Button variant="secondary" onClick={resetTimer} >
+                                <i className="bi bi-arrow-clockwise"></i>
+                            </Button>
+                            <Button variant="secondary" href={`todo/${todo.id}`} >
+                                <i className="bi bi-pencil"></i>
+                            </Button>
+                            <Button variant="secondary" onClick={deleteTodo} >
+                                <i className="bi bi-trash3"></i>
+                            </Button>
+                        </ButtonGroup>
+                    </div>
                 </Card.Body>
             </Card>
         </>

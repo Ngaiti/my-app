@@ -22,7 +22,7 @@ export default function Weather() {
 
     return (
         <div>
-            <h1> Current weather: {weatherInfo.current_weather.temperature}°C </h1>
+            <h1> Current weather (Kuching): {weatherInfo.current_weather.temperature}°C </h1>
         </div>
     )
 }

@@ -13,6 +13,7 @@ import useLocalStorage from 'use-local-storage';
 import { TodoContext } from './contexts/TodoContext';
 import "./App.css"
 import { useContext } from 'react';
+import Timer from './components/Timer';
 
 
 function Layout() {
@@ -28,6 +29,7 @@ function Layout() {
       <Navbar bg="light" variant="light" className='bg-dark text-light' >
         <Container className="d-flex justify-content-between">
           <Navbar.Brand className="text-light" href="/home">Home :3</Navbar.Brand>
+          <Timer />
           <Navbar.Brand className="text-light" href="/" onClick={handleLogout}>Logout</Navbar.Brand>
         </Container>
       </Navbar>

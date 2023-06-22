@@ -1,13 +1,13 @@
 import './App.css'
-import Home from './pages/Home'
 import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom'
 import Login from './pages/Login'
 import { AuthContext } from './AuthContext';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import ErrorPage from './pages/Error';
 import RequireAuth from './components/RequireAuth';
-import MainPage from './pages/MainPage';
+import Home from './pages/Home';
 import useLocalStorage from 'use-local-storage';
+import Welcome from './pages/Welcome';
 
 function Layout() {
   return (
@@ -33,16 +33,16 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
+            <Route index element={<Welcome />} />
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<ErrorPage />} />
             <Route
               element={
                 <RequireAuth>
-                  <MainPage />
+                  <Home />
                 </RequireAuth>
               }
-              path="/mainpage" />
+              path="/Home" />
           </Route>
         </Routes>
       </BrowserRouter>

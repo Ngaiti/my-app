@@ -1,13 +1,10 @@
-import { Container } from "react-bootstrap"
-import Likecount from "../components/Likecount"
+import { Container } from "react-bootstrap";
 
-function Home() {
+export default function Home() {
     return (
-        <Container className="my-3">
-            <h1> Howdy Yall!</h1>
-            <Likecount />
+        <Container>
+            <h1 className="my-3">This is real this is me</h1>
+            <p>Hehe</p>
         </Container>
-    )
+    );
 }
-
-export default Home

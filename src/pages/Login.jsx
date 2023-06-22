@@ -16,7 +16,7 @@ export default function Login() {
         const isCorrectPassword = password === "password"
         if (isCorrectUsername && isCorrectPassword) {
             authContext.setToken("4434");
-            navigate("/mainpage")
+            navigate("/Home")
         } else {
             setLoginFailed(true)
         }

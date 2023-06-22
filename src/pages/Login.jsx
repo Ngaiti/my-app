@@ -6,6 +6,8 @@ import { AuthContext } from "../AuthContext";
 export default function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [loginFailed, setLoginFailed] = useState(false);
+
     const navigate = useNavigate()
     const authContext = useContext(AuthContext)
 
@@ -15,6 +17,8 @@ export default function Login() {
         if (isCorrectUsername && isCorrectPassword) {
             authContext.setToken("4434");
             navigate("/mainpage")
+        } else {
+            setLoginFailed(true)
         }
     }
 
@@ -42,6 +46,7 @@ export default function Login() {
                 </Form.Group>
                 <Button className="my-3" variant="primary" onClick={login}>Login</Button>
             </Form>
+            {loginFailed && <p>Invalid email or password. Please try again.</p>}
         </Container>
     )
 
